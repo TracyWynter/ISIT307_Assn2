@@ -20,11 +20,12 @@
                 display: inline-block;
                 cursor: pointer;
                 border-radius: 4px;
-                background: silver;
+                background: dimgrey;
+                color:white;
                 padding: 2px 5px;
             }
             .btnLabel:hover{
-               background:gainsboro;
+                background:grey;
             }
             /* When radio btn is checked */
             #movies:checked + .btnLabel ,
@@ -46,13 +47,19 @@
                 border-radius:2px;
                 padding: 3px 5px;
             }
-            
+
             /* Start Game (Submit) Button */
             .startGameBtn{
                 margin-left: auto;
                 margin-right:auto;
             }
-        
+            .startGameBtn input[type=submit]{
+                padding:2px 6px;
+            }
+            .startGameBtn input[type=submit]:hover{
+                cursor: pointer;
+            }
+
 
         </style>
     </head>
@@ -61,31 +68,46 @@
         <?php
         session_start();
         $gameArr = array(
-        
         );
+        $category = $errMsg = "";
         $checked = TRUE;  // Only if true then will proceed to start game
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
-            $_SESSION["name"] = $_POST["name"];
-            $category = $_POST["category"];
-            
-            
-            if ($checked){
-                header("Location:game.php?category=".$category);
+            if (!empty($_POST["name"])) {
+                $_SESSION["name"] = $_POST["name"];
+            } else {
+                $checked = False;
             }
-            
+            if (!empty($_POST["category"])) {
+                $category = $_POST["category"];
+            } else {
+                $checked = False;
+            }
+
+            if ($checked) {
+                header("Location:game.php?category=" . $category);
+            } else {
+                $errMsg = "Please fill in your nickname and select <b>one</b> category to start game";
+            }
         }
         ?>
         <div>
             <form class="gameStartForm" method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>"/>
             <p><label for="name" >Nickname: </label><input type="text" name="name" id="name"></p>
             <p><label for="category">Choose 1:</label>
-                <input type="radio" class="hideRadio" name="category" id="movies" value="Movies"/><label for="movies" class="btnLabel">Movies</label>
-                <input type="radio" class="hideRadio" name="category" id="music" value="Music"/><label for="music" class="btnLabel">Music</label>
+                <input type="radio" class="hideRadio" name="category" id="movies" value="Movies"<?php if ($category == "Movies") {
+            echo "checked";
+        } ?>/><label for="movies" class="btnLabel">Movies</label>
+                <input type="radio" class="hideRadio" name="category" id="music" value="Music" <?php if ($category == "Music") {
+            echo "checked";
+        } ?> /><label for="music" class="btnLabel">Music</label>
                 <input type="radio" class="hideRadio" name="category" id="sport" value="Sport"/><label for="sport" class="btnLabel">Sport</label>  
             </p>
             <div class="startGameBtn">
                 <input type="submit" name="submit" value="Start Game">
             </div>  
+            <div>
+                <p><?php echo $errMsg; ?></p>
+            </div>
         </form>
     </div>
 </body>
