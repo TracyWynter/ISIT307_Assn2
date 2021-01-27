@@ -15,8 +15,10 @@
                 border: 1px solid grey;
             }
             /* Options (Need More Research)*/
-/*            .hideRadio{
+            /*
+            .hideRadio{
                 display:none;
+          
             }
             .optBtnLabel{
                 cursor:pointer;
@@ -56,11 +58,50 @@
             19 => array('ques' => 'Who was once the head of the white council in the Lord of the Rings?', 'ans' => 'b', 'opt' => array('a' => 'Gandalf', 'b' => 'Saruman', 'c' => 'Illuvitar', 'd' => 'Radaghast')),
             20 => array('ques' => 'What is the name of the movie that involves in asteroids?', 'ans' => 'a', 'opt' => array('a' => 'Armageddon', 'b' => 'World War Z', 'c' => 'Rocks are falling on my head', 'd' => 'Panic Room'))
         );
-        $musicQuestion = array(
-            1 => array('ques' => '', 'ans' => '', 'opt' => array('a' => '', 'b' => '', 'c' => '', 'd' => ''))
+        $musicQuestions = array(
+            1 => array('ques' => 'One Direction is known for being the runners-up in The X Factor in 2010, but who was the champion?', 'ans' => 'c', 'opt' => array('a' => 'Miley Cyrus', 'b' => 'David Archuleta', 'c' => 'Matt Cardle', 'd' => 'Susan Boyle')),
+            2 => array('ques' => 'Which singer has the most UK Number One singles ever?', 'ans' => 'a', 'opt' => array('a' => 'Elvis Presley', 'b' => 'Elton John', 'c' => 'Queen', 'd' => 'Shayne Ward')),
+            3 => array('ques' => 'What was Britney Spears’ first single called?', 'ans' => 'd', 'opt' => array('a' => 'Opps! I did it again', 'b' => 'Toxic', 'c' => 'Criminal', 'd' => 'Baby One More Time')),
+            4 => array('ques' => 'What is  the very first song from the boyband group called Westlife in 1999?', 'ans' => 'a', 'opt' => array('a' => 'Swear It Again', 'b' => 'Fool Again', 'c' => 'Seasons in the Sun', 'd' => 'I Have A Dream')),
+            5 => array('ques' => 'What was the name of Madonna’s first studio album, released in 1983?', 'ans' => 'a', 'opt' => array('a' => 'Madonna', 'b' => 'Carabana', 'c' => 'Edge of Glory', 'd' => 'Bad Romance')),
+            6 => array('ques' => 'What is the song that has the lyrics "Annie are you ok? are you ok Annie?"', 'ans' => 'c', 'opt' => array('a' => 'Heal the World', 'b' => 'You Are Not Alone', 'c' => 'Smooth Criminal', 'd' => 'Black or White')),
+            7 => array('ques' => 'What song did Celine Dion sing that represents the Titanic?', 'ans' => 'b', 'opt' => array('a' => 'I\'m Alive ', 'b' => 'My Heart Will Go On', 'c' => 'Just walk Away', 'd' => 'If You Asked Me To')),
+            8 => array('ques' => 'Which famous rapper married reality TV star Kim Kardashian in 2014?', 'ans' => 'd', 'opt' => array('a' => 'Lana Del Rey', 'b' => 'Madonna', 'c' => 'Taylor Swift', 'd' => 'Kanye West')),
+            9 => array('ques' => 'Which song did Taylor Swift sing that involves tearsdrops?', 'ans' => 'a', 'opt' => array('a' => 'Teardrops on my Guitar', 'b' => '22', 'c' => 'Love Story', 'd' => 'Bad Blood')),
+            10 => array('ques' => 'Which group created the song called “When can I see you again?”', 'ans' => 'b', 'opt' => array('a' => 'Black Eye Peas', 'b' => 'Owl City', 'c' => 'The four seasons', 'd' => 'The Jackson 5')),
+            11 => array('ques' => 'Who is a member of the group "Owl City?"', 'ans' => 'c', 'opt' => array('a' => 'Jason Mraz', 'b' => 'Celena Harper', 'c' => 'Adam Young', 'd' => 'Selena Gomez')),
+            12 => array('ques' => 'Which song did Jason Mraz created?', 'ans' => 'a', 'opt' => array('a' => 'I\'m Yours', 'b' => 'Sorry', 'c' => 'Love Somebody', 'd' => 'You are Mine')),
+            13 => array('ques' => 'Which song did maroon5 sing?', 'ans' => 'b', 'opt' => array('a' => 'ABC', 'b' => 'Love Somebody', 'c' => 'Push It', 'd' => 'We are Family')),
+            14 => array('ques' => 'Which year Maroon5 was first formed?', 'ans' => 'd', 'opt' => array('a' => '2003', 'b' => '2002', 'c' => '1998', 'd' => '1994')),
+            15 => array('ques' => 'What is the song Lady Gaga is famous for in the movie "A Star Is Born"?', 'ans' => 'b', 'opt' => array('a' => 'Just Dance', 'b' => 'Shallow', 'c' => 'Paparazzi', 'd' => 'Telephone')),
+            16 => array('ques' => 'Which song did NSYNC release in 2000?', 'ans' => 'c', 'opt' => array('a' => 'Bad Day', 'b' => 'Beautiful Day', 'c' => 'Bye Bye Bye', 'd' => 'Say My Name')),
+            17 => array('ques' => 'What song did Vanessa Carlton sing which became a famous hit song in 2003?', 'ans' => 'd', 'opt' => array('a' => 'Drops of Jupiter', 'b' => 'A Thousand Tears', 'c' => 'Ms Jackson', 'd' => 'A Thousand Miles')),
+            18 => array('ques' => 'Which song is a hot hit for Katy Perry in 2012?', 'ans' => 'd', 'opt' => array('a' => 'We are Young', 'b' => 'Roar', 'c' => 'Grenade', 'd' => 'Firework')),
+            19 => array('ques' => 'What song is Adele famous for in 2017?', 'ans' => 'a', 'opt' => array('a' => 'Hello', 'b' => 'Don\'t Stop Believing', 'c' => 'Savage', 'd' => 'Truth Hurts')),
+            20 => array('ques' => 'What song is Ricky Martin famous for in the movie shrek?', 'ans' => 'b', 'opt' => array('a' => 'Hero', 'b' => 'Livin\' La Vida Loca', 'c' => 'Little Drop of Poison', 'd' => 'Changes')),
+            
         );
         $sportQuestions = array(
-            1 => array('ques' => '', 'ans' => '', 'opt' => array('a' => '', 'b' => '', 'c' => '', 'd' => ''))
+                        1 => array('ques' => '', 'ans' => '', 'opt' => array('a' => '', 'b' => '', 'c' => '', 'd' => '')),
+            2 => array('ques' => '', 'ans' => '', 'opt' => array('a' => '', 'b' => '', 'c' => '', 'd' => '')),
+            3 => array('ques' => '', 'ans' => '', 'opt' => array('a' => '', 'b' => '', 'c' => '', 'd' => '')),
+            4 => array('ques' => '', 'ans' => '', 'opt' => array('a' => '', 'b' => '', 'c' => '', 'd' => '')),
+            5 => array('ques' => '', 'ans' => '', 'opt' => array('a' => '', 'b' => '', 'c' => '', 'd' => '')),
+            6 => array('ques' => '', 'ans' => '', 'opt' => array('a' => '', 'b' => '', 'c' => '', 'd' => '')),
+            7 => array('ques' => '', 'ans' => '', 'opt' => array('a' => '', 'b' => '', 'c' => '', 'd' => '')),
+            8 => array('ques' => '', 'ans' => '', 'opt' => array('a' => '', 'b' => '', 'c' => '', 'd' => '')),
+            9 => array('ques' => '', 'ans' => '', 'opt' => array('a' => '', 'b' => '', 'c' => '', 'd' => '')),
+            10 => array('ques' => '', 'ans' => '', 'opt' => array('a' => '', 'b' => '', 'c' => '', 'd' => '')),
+            11 => array('ques' => '', 'ans' => '', 'opt' => array('a' => '', 'b' => '', 'c' => '', 'd' => '')),
+            12 => array('ques' => '', 'ans' => '', 'opt' => array('a' => '', 'b' => '', 'c' => '', 'd' => '')),
+            13 => array('ques' => '', 'ans' => '', 'opt' => array('a' => '', 'b' => '', 'c' => '', 'd' => '')),
+            14 => array('ques' => '', 'ans' => '', 'opt' => array('a' => '', 'b' => '', 'c' => '', 'd' => '')),
+            15 => array('ques' => '', 'ans' => '', 'opt' => array('a' => '', 'b' => '', 'c' => '', 'd' => '')),
+            16 => array('ques' => '', 'ans' => '', 'opt' => array('a' => '', 'b' => '', 'c' => '', 'd' => '')),
+            17 => array('ques' => '', 'ans' => '', 'opt' => array('a' => '', 'b' => '', 'c' => '', 'd' => '')),
+            18 => array('ques' => '', 'ans' => '', 'opt' => array('a' => '', 'b' => '', 'c' => '', 'd' => '')),
+            19 => array('ques' => '', 'ans' => '', 'opt' => array('a' => '', 'b' => '', 'c' => '', 'd' => '')),
+            20 => array('ques' => '', 'ans' => '', 'opt' => array('a' => '', 'b' => '', 'c' => '', 'd' => '')),
         );
 
         // Function to load the category questions
