@@ -2,6 +2,28 @@
     <head>
         <title><?php echo $_GET["category"]; ?> Challenge</title>
         <style type="text/css">
+            body{
+                padding:20px;
+                font-family: Arial, Helvetica, sans-serif;
+                margin-left:auto;
+                margin-right:auto;
+                background-image:url(Images/background.jpg);
+                background-size:cover;
+                background-repeat: no-repeat;
+                width:700px;
+            }
+            /* Title */
+            #titleContainer{
+                margin-left:auto;
+                margin-right:auto;
+                width:700px;
+                padding: 0px 25px 5px 25px;
+                color:white;
+            }
+            #title{
+                text-align:center;
+                font-size:35px;
+            }
             /* Questions (Each Questions) */
             .quesSection{
                 width: 700px;
@@ -9,34 +31,53 @@
                 margin-right:auto;
             }
             .quesClass{
-                font-family: Arial, Helvetica, sans-serif;
                 width: 700px;
                 padding: 5px 25px;
                 margin-bottom:35px;
                 border: 1px solid grey;
                 border-radius:4px;
+                background-color:lavender;
             }
-            /* Options (Need More Research)*/
-            /*
+            /* Options (Need More Research)*/         
             .hideRadio{
                 display:none;
-          
+
             }
             .optBtnLabel{
                 cursor:pointer;
                 border-radius: 5px;
-                background: lightgrey;
+                background-color: thistle;
                 color: black;
-                padding: 1px 5px;
-            }*/
+                padding: 3px 8px;
+            }
+            input[type="radio"]:checked .optBtnLabel{
+                background-color:blue;
+            }
+            #buttonSection{
+                width:750px;
+                padding-bottom: 35px;
+            }
+            .quesSection input[type=submit]{
+                border:none;
+                border-radius:4px;
+                outline:none;
+                cursor:pointer;
+                padding: 8px 15px;
+                background-color:cornflowerblue;
+                color:white;
+                float:right;
+            }
+            .quesSection input[type=submit]:hover{
+                background-color: dodgerblue;
+            }
+
+
 
         </style>
     </head>
     <body>
         <?php
         session_start();
-
-
         // Arrays of Questions
         $moviesQuestions = array(
             1 => array('ques' => 'Who acted as Jack in Titanic?', 'ans' => 'c', 'opt' => array('a' => 'Robert Downey Junior', 'b' => 'Clark Gregg', 'c' => 'Leonardo DiCaprio', 'd' => 'Bruce Willis')),
@@ -141,7 +182,7 @@
             if (isset($_GET["category"])) {
                 $category = $_GET["category"];
                 if (!empty($category)) {
-                    $_SESSION['questionsArr']= loadQuestions($category);
+                    $_SESSION['questionsArr'] = loadQuestions($category);
                     if (sizeof($_SESSION['questionsArr']) !== 0) {
                         $checked = True;    // If only the category is not blank and not returning empty questions.
                     }
@@ -160,21 +201,20 @@
             6 => '',
             7 => '',
         );
-        $current_point = $correct_ques_count = $wrong_ques_count  =  0;
-        
+        $current_point = $correct_ques_count = $wrong_ques_count = 0;
+
         // When user finish the challenge
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $_SESSION['attempt_count'] += 1;   // Increase the attempt
-            
             // Load the posted data to the userAns array
             foreach ($_POST as $key => $value) {
-                if ($key != 'submit'){
+                if ($key != 'submit') {
                     $userAns[$key] = htmlspecialchars($value);
                 }
             }
             // Check the user ans and the correct ans (userAns vs questionsArr)
-            foreach ($userAns as $key => $value){
-                if($value == $_SESSION['questionsArr'][$key]['ans']){
+            foreach ($userAns as $key => $value) {
+                if ($value == $_SESSION['questionsArr'][$key]['ans']) {
                     $correct_ques_count++;
                 } else {
                     $wrong_ques_count++;
@@ -184,15 +224,14 @@
             // Point calculations
             $_SESSION['current_points'] = (3 * ($correct_ques_count)) - (2 * ($wrong_ques_count));
             $_SESSION['total_points'] += (int) $_SESSION['current_points'];
-            $_SESSION['overall_points']= (int) ($_SESSION['total_points'] / $_SESSION['attempt_count']);
+            $_SESSION['overall_points'] = (int) ($_SESSION['total_points'] / $_SESSION['attempt_count']);
             unset($_SESSION['questionsArr']);
-            header("Location:gameResult.php");
-            
+            header("Location:currentResult.php");
         }
         ?>
         <div id="logo"></div>
-        <div>
-        <?php echo "Nickname: " . $_SESSION["name"]; ?> <!-- Name Testing -->
+        <div id="titleContainer">
+            <p  id="title"><?php echo $_GET['category']; ?> Challenge</p>
         </div>
         <!-- Question Section -->
         <div class="quesSection">
@@ -200,14 +239,15 @@
             if ($checked) {
                 echo '<form method="post"  action="' . htmlspecialchars($_SERVER["PHP_SELF"]) . '">';
                 for ($i = 1; $i <= sizeof($_SESSION['questionsArr']); $i++) {
-                    echo '<div class="quesClass"><p>Q' . ($i) . '. ' . $_SESSION['questionsArr'][$i]['ques'] . '</p>';
+                    echo '<div class="quesClass"><p><b>Q' . ($i) . '. ' . $_SESSION['questionsArr'][$i]['ques'] . '</b></p>';
                     foreach ($_SESSION['questionsArr'][$i]['opt'] as $key => $value) {   // key(a,b,c,d)
                         echo '<p><input type="radio" class="hideRadio" id="' . $i . $key . '" name="' . $i . '" value="' . $key . '">';
                         echo '<label for="' . $i . $key . '" class="optBtnLabel">' . $key . '. ' . $value . '</label></p>';
+
                     }
                     echo '</div>';
                 }
-                echo '<div><input type="submit" name="submit"value="Finish Challenge"></div>';
+                echo '<div id="buttonSection"><input type="submit" name="submit"value="Finish Challenge"></div>';
                 echo '</form>';
             }
             ?>
