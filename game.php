@@ -9,10 +9,12 @@
                 margin-right:auto;
             }
             .quesClass{
+                font-family: Arial, Helvetica, sans-serif;
                 width: 700px;
                 padding: 5px 25px;
                 margin-bottom:35px;
                 border: 1px solid grey;
+                border-radius:4px;
             }
             /* Options (Need More Research)*/
             /*
@@ -133,13 +135,14 @@
 
         $category = "";
         $checked = False;
+
         if ($_SERVER["REQUEST_METHOD"] == "GET") {
             /* Load values */
             if (isset($_GET["category"])) {
                 $category = $_GET["category"];
                 if (!empty($category)) {
-                    $questionsArr = loadQuestions($category);
-                    if (sizeof($questionsArr) !== 0) {
+                    $_SESSION['questionsArr']= loadQuestions($category);
+                    if (sizeof($_SESSION['questionsArr']) !== 0) {
                         $checked = True;    // If only the category is not blank and not returning empty questions.
                     }
                 } else {
@@ -157,21 +160,34 @@
             6 => '',
             7 => '',
         );
-        $current_point = $correct_ques_count = $wrong_ques_count = $total_points = $attempt_count = 0;
+        $current_point = $correct_ques_count = $wrong_ques_count  =  0;
+        
         // When user finish the challenge
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
+            $_SESSION['attempt_count'] += 1;   // Increase the attempt
+            
             // Load the posted data to the userAns array
             foreach ($_POST as $key => $value) {
-                $userAns[$key] = $value;
+                if ($key != 'submit'){
+                    $userAns[$key] = htmlspecialchars($value);
+                }
+            }
+            // Check the user ans and the correct ans (userAns vs questionsArr)
+            foreach ($userAns as $key => $value){
+                if($value == $_SESSION['questionsArr'][$key]['ans']){
+                    $correct_ques_count++;
+                } else {
+                    $wrong_ques_count++;
+                }
             }
 
-            // Check the user ans and the correct ans
-            
-            
             // Point calculations
-            $current_point = (3 * ($correct_ques_count)) - (2 * ($wrong_ques_count));
-            $total_points += $current_point;
-            $_SESSION['overall_point'] = $total_points / $attempt_count;
+            $_SESSION['current_points'] = (3 * ($correct_ques_count)) - (2 * ($wrong_ques_count));
+            $_SESSION['total_points'] += (int) $_SESSION['current_points'];
+            $_SESSION['overall_points']= (int) ($_SESSION['total_points'] / $_SESSION['attempt_count']);
+            unset($_SESSION['questionsArr']);
+            header("Location:gameResult.php");
+            
         }
         ?>
         <div id="logo"></div>
@@ -183,15 +199,15 @@
             <?php
             if ($checked) {
                 echo '<form method="post"  action="' . htmlspecialchars($_SERVER["PHP_SELF"]) . '">';
-                for ($i = 1; $i <= sizeof($questionsArr); $i++) {
-                    echo '<div class="quesClass"><p>Q' . ($i) . '. ' . $questionsArr[$i]['ques'] . '</p>';
-                    foreach ($questionsArr[$i]['opt'] as $key => $value) {   // key(a,b,c,d)
-                        echo '<p><input type="radio" class="hideRadio" id="' . $i . $key . '" name="' . $i . '" value="' . $key . '/>';
+                for ($i = 1; $i <= sizeof($_SESSION['questionsArr']); $i++) {
+                    echo '<div class="quesClass"><p>Q' . ($i) . '. ' . $_SESSION['questionsArr'][$i]['ques'] . '</p>';
+                    foreach ($_SESSION['questionsArr'][$i]['opt'] as $key => $value) {   // key(a,b,c,d)
+                        echo '<p><input type="radio" class="hideRadio" id="' . $i . $key . '" name="' . $i . '" value="' . $key . '">';
                         echo '<label for="' . $i . $key . '" class="optBtnLabel">' . $key . '. ' . $value . '</label></p>';
                     }
                     echo '</div>';
                 }
-                echo '<div><button type="submit" name="submit">Finish Challenge</button></div>';
+                echo '<div><input type="submit" name="submit"value="Finish Challenge"></div>';
                 echo '</form>';
             }
             ?>
