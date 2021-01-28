@@ -79,29 +79,28 @@
             18 => array('ques' => 'Which song is a hot hit for Katy Perry in 2012?', 'ans' => 'd', 'opt' => array('a' => 'We are Young', 'b' => 'Roar', 'c' => 'Grenade', 'd' => 'Firework')),
             19 => array('ques' => 'What song is Adele famous for in 2017?', 'ans' => 'a', 'opt' => array('a' => 'Hello', 'b' => 'Don\'t Stop Believing', 'c' => 'Savage', 'd' => 'Truth Hurts')),
             20 => array('ques' => 'What song is Ricky Martin famous for in the movie shrek?', 'ans' => 'b', 'opt' => array('a' => 'Hero', 'b' => 'Livin\' La Vida Loca', 'c' => 'Little Drop of Poison', 'd' => 'Changes')),
-            
         );
         $sportQuestions = array(
-                        1 => array('ques' => '', 'ans' => '', 'opt' => array('a' => '', 'b' => '', 'c' => '', 'd' => '')),
-            2 => array('ques' => '', 'ans' => '', 'opt' => array('a' => '', 'b' => '', 'c' => '', 'd' => '')),
-            3 => array('ques' => '', 'ans' => '', 'opt' => array('a' => '', 'b' => '', 'c' => '', 'd' => '')),
-            4 => array('ques' => '', 'ans' => '', 'opt' => array('a' => '', 'b' => '', 'c' => '', 'd' => '')),
-            5 => array('ques' => '', 'ans' => '', 'opt' => array('a' => '', 'b' => '', 'c' => '', 'd' => '')),
-            6 => array('ques' => '', 'ans' => '', 'opt' => array('a' => '', 'b' => '', 'c' => '', 'd' => '')),
-            7 => array('ques' => '', 'ans' => '', 'opt' => array('a' => '', 'b' => '', 'c' => '', 'd' => '')),
-            8 => array('ques' => '', 'ans' => '', 'opt' => array('a' => '', 'b' => '', 'c' => '', 'd' => '')),
-            9 => array('ques' => '', 'ans' => '', 'opt' => array('a' => '', 'b' => '', 'c' => '', 'd' => '')),
-            10 => array('ques' => '', 'ans' => '', 'opt' => array('a' => '', 'b' => '', 'c' => '', 'd' => '')),
-            11 => array('ques' => '', 'ans' => '', 'opt' => array('a' => '', 'b' => '', 'c' => '', 'd' => '')),
-            12 => array('ques' => '', 'ans' => '', 'opt' => array('a' => '', 'b' => '', 'c' => '', 'd' => '')),
-            13 => array('ques' => '', 'ans' => '', 'opt' => array('a' => '', 'b' => '', 'c' => '', 'd' => '')),
-            14 => array('ques' => '', 'ans' => '', 'opt' => array('a' => '', 'b' => '', 'c' => '', 'd' => '')),
-            15 => array('ques' => '', 'ans' => '', 'opt' => array('a' => '', 'b' => '', 'c' => '', 'd' => '')),
-            16 => array('ques' => '', 'ans' => '', 'opt' => array('a' => '', 'b' => '', 'c' => '', 'd' => '')),
-            17 => array('ques' => '', 'ans' => '', 'opt' => array('a' => '', 'b' => '', 'c' => '', 'd' => '')),
-            18 => array('ques' => '', 'ans' => '', 'opt' => array('a' => '', 'b' => '', 'c' => '', 'd' => '')),
-            19 => array('ques' => '', 'ans' => '', 'opt' => array('a' => '', 'b' => '', 'c' => '', 'd' => '')),
-            20 => array('ques' => '', 'ans' => '', 'opt' => array('a' => '', 'b' => '', 'c' => '', 'd' => '')),
+            1 => array('ques' => 'What is Usain Bolt’s 100m world record time?', 'ans' => 'd', 'opt' => array('a' => '5 seconds', 'b' => '11 seconds', 'c' => '10.55 seconds', 'd' => '9.58 seconds')),
+            2 => array('ques' => 'The LA Lakers and New York Knicks play which sport?', 'ans' => 'd', 'opt' => array('a' => 'Swimming', 'b' => 'Soccer', 'c' => 'Baseball', 'd' => 'Basketball')),
+            3 => array('ques' => 'Which sport involves tucks and pikes?', 'ans' => 'c', 'opt' => array('a' => 'Bowling', 'b' => 'Fencing', 'c' => 'Diving', 'd' => 'Swimming')),
+            4 => array('ques' => 'Which country did F1 legend Ayrton Senna come from?', 'ans' => 'a', 'opt' => array('a' => 'Brazil', 'b' => 'Canada', 'c' => 'Japan', 'd' => 'Italy')),
+            5 => array('ques' => 'A penalty in football is taken how many yards away from the goal?', 'ans' => 'b', 'opt' => array('a' => '10 Yards', 'b' => '12 Yards', 'c' => '15 Yards', 'd' => '20 Yards')),
+            6 => array('ques' => 'Who are the owners of Liverpool FC?', 'ans' => 'b', 'opt' => array('a' => 'Shenton Way Council', 'b' => 'Fenway Sports Group', 'c' => 'Brazil Sports Group', 'd' => 'Canada International Sports')),
+            7 => array('ques' => 'Where were the Olympics held in 1980?', 'ans' => 'a', 'opt' => array('a' => 'Russia', 'b' => 'Ukraine', 'c' => 'Siberia', 'd' => 'Artic')),
+            8 => array('ques' => 'Which England footballer was famously never given a yellow card?', 'ans' => 'd', 'opt' => array('a' => 'Tyrone Mings', 'b' => 'Kieran Trippier', 'c' => 'Harry Winks', 'd' => 'Gary Lineker')),
+            9 => array('ques' => 'In which sport do you wear a plastron?', 'ans' => 'c', 'opt' => array('a' => 'Darts', 'b' => 'Basketball', 'c' => 'Fencing', 'd' => 'Football')),
+            10 => array('ques' => 'Which snooker player is nicknamed The Rocket?', 'ans' => 'c', 'opt' => array('a' => 'Donald J. Trump', 'b' => 'Rosie O\'Donald', 'c' => 'Ronnie O\'Sullivan', 'd' => 'Rocket Raccoon')),
+            11 => array('ques' => 'How many clubs did David Beckham play for during his career?', 'ans' => 'b', 'opt' => array('a' => '5', 'b' => '6', 'c' => '7', 'd' => '10')),
+            12 => array('ques' => 'What colour medal did diver Tom Daley win at London 2012?', 'ans' => 'c', 'opt' => array('a' => 'Gold', 'b' => 'Silver', 'c' => 'Bronze')),
+            13 => array('ques' => 'Who is the current manager of Crystal Palace?', 'ans' => 'a', 'opt' => array('a' => 'Roy Hodgson', 'b' => 'Diego Simeone', 'c' => 'Antonio  Conte', 'd' => 'Louis Van Gaal')),
+            14 => array('ques' => 'In which sport do competitors refer to ‘catching a crab’?', 'ans' => 'a', 'opt' => array('a' => 'Rowing', 'b' => 'Fencing', 'c' => 'Floorball', 'd' => 'Netball')),
+            15 => array('ques' => 'At which Olympics did Dame Kelly Holmes win two gold medals?', 'ans' => 'd', 'opt' => array('a' => '2000', 'b' => '2008', 'c' => '2013', 'd' => '2004')),
+            16 => array('ques' => 'What does the term ‘albatross’ in golf means?', 'ans' => 'c', 'opt' => array('a' => 'Two under par', 'b' => 'Five under par', 'c' => 'Three under par', 'd' => 'Extra turn')),
+            17 => array('ques' => 'Wayne Rooney scored his Premier League first goal against which team?', 'ans' => 'a', 'opt' => array('a' => 'Arsenal', 'b' => 'Manchester united F.C', 'c' => 'Liverpool F.C', 'd' => 'Chelsea')),
+            18 => array('ques' => 'Name the only two positions who can score in netball.', 'ans' => 'a', 'opt' => array('a' => 'Goal Shooter and Goal Attack', 'b' => 'Wing Attack and Wing Defence', 'c' => 'Goal Defence and Goal Keeper', 'd' => 'Centre and Goal Shooter')),
+            19 => array('ques' => 'In bowling, what is the term given for three consecutive strikes?', 'ans' => 'b', 'opt' => array('a' => 'A Chicken', 'b' => 'A Turkey', 'c' => 'A Split', 'd' => 'A Strike')),
+            20 => array('ques' => 'Who has won more Grand Slams, Roger Federer or Serena Williams?', 'ans' => 'b', 'opt' => array('a' => 'Roger Federer', 'b' => 'Serena Williams')),
         );
 
         // Function to load the category questions
@@ -158,34 +157,32 @@
             6 => '',
             7 => '',
         );
+        $current_point = $correct_ques_count = $wrong_ques_count = $total_points = $attempt_count = 0;
         // When user finish the challenge
-        if($_SERVER["REQUEST_METHOD"] == "POST"){
+        if ($_SERVER["REQUEST_METHOD"] == "POST") {
             // Load the posted data to the userAns array
-            foreach($_POST as $key => $value){
+            foreach ($_POST as $key => $value) {
                 $userAns[$key] = $value;
             }
-            
+
             // Check the user ans and the correct ans
             
             
-            
-            $current_point = (3 *($correct_ques_count)) - (2 * ($wrong_ques_count));
-            $total_point += $current_point;
-            $overall_point = $total_points/ $attempt_count;
-            
+            // Point calculations
+            $current_point = (3 * ($correct_ques_count)) - (2 * ($wrong_ques_count));
+            $total_points += $current_point;
+            $_SESSION['overall_point'] = $total_points / $attempt_count;
         }
-        
-        
         ?>
         <div id="logo"></div>
         <div>
-            <?php echo "Nickname: ".$_SESSION["name"]; ?> <!-- Name Testing -->
+        <?php echo "Nickname: " . $_SESSION["name"]; ?> <!-- Name Testing -->
         </div>
         <!-- Question Section -->
         <div class="quesSection">
             <?php
             if ($checked) {
-                echo '<form method="post"  action="'.htmlspecialchars($_SERVER["PHP_SELF"]).'">';
+                echo '<form method="post"  action="' . htmlspecialchars($_SERVER["PHP_SELF"]) . '">';
                 for ($i = 1; $i <= sizeof($questionsArr); $i++) {
                     echo '<div class="quesClass"><p>Q' . ($i) . '. ' . $questionsArr[$i]['ques'] . '</p>';
                     foreach ($questionsArr[$i]['opt'] as $key => $value) {   // key(a,b,c,d)
