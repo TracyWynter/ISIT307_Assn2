@@ -4,13 +4,23 @@
         <style type="text/css">
             body{
                 padding:20px;
-                font-family: Arial, Helvetica, sans-serif;
+                font-family: "Comic Sans MS", "Comic Sans", cursive;
                 margin-left:auto;
                 margin-right:auto;
                 background-image:url(Images/background.jpg);
                 background-size:cover;
                 background-repeat: no-repeat;
                 width:700px;
+            }
+            /* Game Logo */
+            #logo{
+                background-image:url(Images/logo.png);
+                margin-left:auto;
+                margin-right: auto;
+                background-repeat: no-repeat;
+                background-size:contain;
+                height:150px;
+                width:150px;
             }
             /* Title */
             #titleContainer{
@@ -38,10 +48,9 @@
                 border-radius:4px;
                 background-color:lavender;
             }
-            /* Options*/         
+            /* Radio Options*/         
             .hideRadio{
                 display:none;
-
             }
             .optBtnLabel{
                 cursor:pointer;
@@ -53,10 +62,12 @@
             .hideRadio:checked + .optBtnLabel{
                 background-color:palegreen;
             }
+            /* Buttons */
             #buttonSection{
                 width:750px;
                 padding-bottom: 35px;
             }
+            /* Submit Button */
             .quesSection input[type=submit]{
                 border:none;
                 border-radius:4px;
@@ -70,9 +81,6 @@
             .quesSection input[type=submit]:hover{
                 background-color: dodgerblue;
             }
-
-
-
         </style>
     </head>
     <body>
@@ -170,7 +178,6 @@
                     $questionList[$i + 1] = $questions[$ran_keys[$i]];
                 }
             }
-
             return $questionList;
         }
 
@@ -179,16 +186,14 @@
 
         if ($_SERVER["REQUEST_METHOD"] == "GET") {
             /* Load values */
-            if (isset($_GET["category"])) {
+            if (isset($_GET["category"]) && !empty($_GET["category"])) {    // Check if the category field is loaded with the correct value
                 $category = $_GET["category"];
-                if (!empty($category)) {
-                    $_SESSION['questionsArr'] = loadQuestions($category);
-                    if (sizeof($_SESSION['questionsArr']) !== 0) {
-                        $checked = True;    // If only the category is not blank and not returning empty questions.
-                    }
-                } else {
-                    echo "No category is selected";
+                $_SESSION['questionsArr'] = loadQuestions($category);
+                if (sizeof($_SESSION['questionsArr']) !== 0) {
+                    $checked = True;    // If only the category is not blank and not returning empty questions.
                 }
+            } else {
+                header("Location:index.php");
             }
         }
         // Array to store the user answers
@@ -202,7 +207,6 @@
             7 => '',
         );
         $current_point = $correct_ques_count = $wrong_ques_count = 0;
-
         // When user finish the challenge
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $_SESSION['attempt_count'] += 1;   // Increase the attempt
@@ -220,38 +224,42 @@
                     $wrong_ques_count++;
                 }
             }
-
             // Point calculations
             $_SESSION['current_points'] = (3 * ($correct_ques_count)) - (2 * ($wrong_ques_count));
             $_SESSION['total_points'] += (int) $_SESSION['current_points'];
             $_SESSION['overall_points'] = (int) ($_SESSION['total_points'] / $_SESSION['attempt_count']);
-            unset($_SESSION['questionsArr']);   // Reset the array for next attempt.
+            unset($_SESSION['questionsArr']);   // Reset the array for next attempt. 
             //Redirect to the attempt result page
-            header("Location:currentResult.php");   
+            header("Location:currentResult.php");
         }
         ?>
-        <div id="logo"></div>
+        <!-- Game Logo -->
+        <div>
+            <p id="logo"></p>
+        </div>
+        <!-- Challenge Title -->
         <div id="titleContainer">
-            <p  id="title"><?php echo $_GET['category']; ?> Challenge</p>
+            <p  id="title"><?php echo $category; ?> Challenge</p>
         </div>
         <!-- Question Section -->
         <div class="quesSection">
-            <?php
-            if ($checked) {
-                echo '<form method="post"  action="' . htmlspecialchars($_SERVER["PHP_SELF"]) . '">';
-                for ($i = 1; $i <= sizeof($_SESSION['questionsArr']); $i++) {
-                    echo '<div class="quesClass"><p><b>Q' . ($i) . '. ' . $_SESSION['questionsArr'][$i]['ques'] . '</b></p>';
-                    foreach ($_SESSION['questionsArr'][$i]['opt'] as $key => $value) {   // key(a,b,c,d)
-                        echo '<p><input type="radio" class="hideRadio" id="' . $i . $key . '" name="' . $i . '" value="' . $key . '">';
-                        echo '<label for="' . $i . $key . '" class="optBtnLabel">' . $key . '. ' . $value . '</label></p>';
-
-                    }
-                    echo '</div>';
-                }
-                echo '<div id="buttonSection"><input type="submit" name="submit"value="Finish Challenge"></div>';
-                echo '</form>';
-            }
-            ?>
+<?php
+if ($checked) {
+    echo '<form method="post"  action="' . htmlspecialchars($_SERVER["PHP_SELF"]) . '">';
+    // Loop the question from the list of 7 questions
+    for ($i = 1; $i <= sizeof($_SESSION['questionsArr']); $i++) {
+        echo '<div class="quesClass"><p><b>Q' . ($i) . '. ' . $_SESSION['questionsArr'][$i]['ques'] . '</b></p>';
+        foreach ($_SESSION['questionsArr'][$i]['opt'] as $key => $value) {   // key(a,b,c,d)
+            echo '<p><input type="radio" class="hideRadio" id="' . $i . $key . '" name="' . $i . '" value="' . $key . '">';
+            echo '<label for="' . $i . $key . '" class="optBtnLabel">' . $key . '. ' . $value . '</label></p>';
+        }
+        echo '</div>';
+    }
+    // When the user submit the challenge attempt
+    echo '<div id="buttonSection"><input type="submit" name="submit"value="Finish Challenge"></div>';
+    echo '</form>';
+}
+?>
         </div>
 
     </body>
