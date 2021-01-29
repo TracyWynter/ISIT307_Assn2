@@ -1,10 +1,11 @@
 body{
     text-align:center;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: "Comic Sans MS", "Comic Sans", cursive;
     padding: 20px;
-    background-image:url(Images/background.jpg);
-    background-size:cover;
     background-repeat: no-repeat;
+    background-size:cover;
+    background-image: linear-gradient(to bottom right, mediumblue,teal ,indigo ,darkcyan, midnightblue);
+    height:100%;
 }
 #logo{
     background-image:url(Images/logo.png);
@@ -21,7 +22,7 @@ body{
     margin-left:auto;
     margin-right:auto;
     margin-bottom:0;
-    background-color:darkslateblue;
+    background-color:#276079;
     width:400px;
     height: 30px;
     padding:8px 10px 0px 10px;
@@ -90,13 +91,13 @@ body{
 #user::placeholder{
     text-align:center;
 }
-
 /* Start Game (Submit) Button */
 .startGameBtn{
     margin-left: auto;
     margin-right:auto;
 }
 .startGameBtn input[type=submit]{
+    font-family: "Comic Sans MS", "Comic Sans", cursive;
     padding:6px 15px;
     border:none;
     border-radius: 4px;
@@ -108,5 +109,9 @@ body{
     cursor: pointer;
     background-color:firebrick;
     color:white;
+}
+/* Error Message */
+.errMsg{
+    color:lavenderblush;
 }
 
