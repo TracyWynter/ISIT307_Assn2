@@ -38,7 +38,7 @@
                 border-radius:4px;
                 background-color:lavender;
             }
-            /* Options (Need More Research)*/         
+            /* Options*/         
             .hideRadio{
                 display:none;
 
@@ -50,8 +50,8 @@
                 color: black;
                 padding: 3px 8px;
             }
-            input[type="radio"]:checked .optBtnLabel{
-                background-color:blue;
+            .hideRadio:checked + .optBtnLabel{
+                background-color:palegreen;
             }
             #buttonSection{
                 width:750px;
@@ -225,8 +225,9 @@
             $_SESSION['current_points'] = (3 * ($correct_ques_count)) - (2 * ($wrong_ques_count));
             $_SESSION['total_points'] += (int) $_SESSION['current_points'];
             $_SESSION['overall_points'] = (int) ($_SESSION['total_points'] / $_SESSION['attempt_count']);
-            unset($_SESSION['questionsArr']);
-            header("Location:currentResult.php");
+            unset($_SESSION['questionsArr']);   // Reset the array for next attempt.
+            //Redirect to the attempt result page
+            header("Location:currentResult.php");   
         }
         ?>
         <div id="logo"></div>
