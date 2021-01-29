@@ -3,7 +3,20 @@
         <title>Challenge Final Result</title>
         <style type="text/css">   
             body{
-                font-family: Arial, Helvetica, sans-serif;
+                font-family: "Comic Sans MS", "Comic Sans", cursive;
+                background-repeat: no-repeat;
+                background-size:cover;
+                background-image: linear-gradient(to bottom right, mediumblue,teal ,indigo ,darkcyan, midnightblue);
+            }
+            /* Game Logo */
+            #logo{
+                background-image:url(Images/logo.png);
+                margin-left:auto;
+                margin-right: auto;
+                background-repeat: no-repeat;
+                background-size:contain;
+                height:150px;
+                width:150px;
             }
             .resultBoard{
                 width: 400px;
@@ -29,14 +42,23 @@
             /* New Challenge Button */
             #new_challenge{
                 cursor:pointer;
-                padding: 4px 6px;
+                padding: 6px 6px;
                 background-color:brown;
                 color:white;
                 border:none;
                 border-radius: 3px;
                 margin-bottom: 10px;
                 outline:none;
-                
+            }
+            /* Circlular Display of Nickname */
+            #username{
+                border-radius:15px;
+                background-color:darkslategray;
+                color:white;
+                text-align:center;
+                vertical-align:text-top;
+                padding:0px 8px 3px 8px;
+
             }
         </style>
     </head>
@@ -49,21 +71,32 @@
             session_unset();
             session_destroy();
         }
+
+        if ($_SERVER['REQUEST_METHOD'] == "GET") {
+            // If the session is empty direct user to the main page
+            if (sizeof($_SESSION) == 0) {
+                header("Location:index.php");
+            }
+        }
         ?>
+        <!-- Game Logo -->
+        <div>
+            <p id="logo"></p>
+        </div>
+        <!-- Final Result Board -->
         <div class="resultBoard">
             <div id="resultTitle">Results</div>
             <?php
-            echo "<p><b>" . $_SESSION['user'] . "</b>'s Challenge Score Board</p>";
+            echo "<p><span id='username'><b>" . $_SESSION['user'] . "</b></span> 's Challenge Score Board</p>";
             echo "<p>Overall Score: " . $_SESSION['overall_points'] . "</p>";
             exitGame();
             ?>
             <div>
-                <form action = "index.php" method = "get">
+                <form action = "index.php" method = "post">
                     <input type = "submit" name = "new_game" id="new_challenge" value = "New Challenge">
                 </form>
             </div>
         </div>
-
     </body>
 </html>
 
