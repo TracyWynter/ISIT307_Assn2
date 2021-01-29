@@ -7,9 +7,7 @@
                 font-family: "Comic Sans MS", "Comic Sans", cursive;
                 margin-left:auto;
                 margin-right:auto;
-                background-image:url(Images/background.jpg);
-                background-size:cover;
-                background-repeat: no-repeat;
+                background-image: linear-gradient(to bottom right, mediumblue,teal ,indigo ,darkcyan, midnightblue);
                 width:700px;
             }
             /* Game Logo */
@@ -44,9 +42,8 @@
                 width: 700px;
                 padding: 5px 25px;
                 margin-bottom:35px;
-                border: 1px solid grey;
                 border-radius:4px;
-                background-color:lavender;
+                background-color: #92BFE6;
             }
             /* Radio Options*/         
             .hideRadio{
@@ -55,12 +52,12 @@
             .optBtnLabel{
                 cursor:pointer;
                 border-radius: 5px;
-                background-color: thistle;
+                background-color: #759EFD;
                 color: black;
                 padding: 3px 8px;
             }
             .hideRadio:checked + .optBtnLabel{
-                background-color:palegreen;
+                background-color: #6BD1A1;
             }
             /* Buttons */
             #buttonSection{
@@ -243,23 +240,23 @@
         </div>
         <!-- Question Section -->
         <div class="quesSection">
-<?php
-if ($checked) {
-    echo '<form method="post"  action="' . htmlspecialchars($_SERVER["PHP_SELF"]) . '">';
-    // Loop the question from the list of 7 questions
-    for ($i = 1; $i <= sizeof($_SESSION['questionsArr']); $i++) {
-        echo '<div class="quesClass"><p><b>Q' . ($i) . '. ' . $_SESSION['questionsArr'][$i]['ques'] . '</b></p>';
-        foreach ($_SESSION['questionsArr'][$i]['opt'] as $key => $value) {   // key(a,b,c,d)
-            echo '<p><input type="radio" class="hideRadio" id="' . $i . $key . '" name="' . $i . '" value="' . $key . '">';
-            echo '<label for="' . $i . $key . '" class="optBtnLabel">' . $key . '. ' . $value . '</label></p>';
-        }
-        echo '</div>';
-    }
-    // When the user submit the challenge attempt
-    echo '<div id="buttonSection"><input type="submit" name="submit"value="Finish Challenge"></div>';
-    echo '</form>';
-}
-?>
+            <?php
+            if ($checked) {
+                echo '<form method="post"  action="' . htmlspecialchars($_SERVER["PHP_SELF"]) . '">';
+                // Loop the question from the list of 7 questions
+                for ($i = 1; $i <= sizeof($_SESSION['questionsArr']); $i++) {
+                    echo '<div class="quesClass"><p><b>Q' . ($i) . '. ' . $_SESSION['questionsArr'][$i]['ques'] . '</b></p>';
+                    foreach ($_SESSION['questionsArr'][$i]['opt'] as $key => $value) {   // key(a,b,c,d)
+                        echo '<p><input type="radio" class="hideRadio" id="' . $i . $key . '" name="' . $i . '" value="' . $key . '">';
+                        echo '<label for="' . $i . $key . '" class="optBtnLabel">' . $key . '. ' . $value . '</label></p>';
+                    }
+                    echo '</div>';
+                }
+                // When the user submit the challenge attempt
+                echo '<div id="buttonSection"><input type="submit" name="submit"value="Finish Challenge"></div>';
+                echo '</form>';
+            }
+            ?>
         </div>
 
     </body>
