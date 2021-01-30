@@ -69,9 +69,20 @@
                 header("Location:finalResult.php"); // Direct to the ending result of the challenge
             }
             if (isset($_POST['start_game']) && !empty($_POST['category'])) {
+                $_SESSION["valid_challenge"] = TRUE;
                 header("Location:game.php?category=" . $_POST['category']);   // A new round of challenge
             } else {
                 $errMsg = "Select one category";
+            }
+        }
+        $current_points = $overall_points = 0;
+        if ($_SERVER['REQUEST_METHOD'] == "GET"){
+            if (isset($_SESSION['overall_points']) && isset($_SESSION['current_points'])){
+                $_SESSION["valid_challenge"] = FALSE;
+                $current_point = $_SESSION['current_points'];
+                $overall_points = $_SESSION['overall_points'];
+            } else{
+                header("Location:index.php");   // If the session variable is not set, direct user to main page
             }
         }
         ?>
@@ -83,8 +94,8 @@
         <div class="resultBoard">
             <div id="resultTitle">Results</div>
             <?php
-            echo "<p>Overall Points: " . $_SESSION['overall_points'] . "</p>";
-            echo "<p>Current Points: " . $_SESSION['current_points'] . "</p>";
+            echo "<p>Overall Points: " . $overall_points . "</p>";
+            echo "<p>Current Points: " . $current_points . "</p>";
             ?>
             <form method="post" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']) ?>">
                 <input type="submit" id="exitBtn" name="exit_game" value="Exit Game">

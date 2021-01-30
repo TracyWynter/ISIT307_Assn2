@@ -52,7 +52,7 @@
             .optBtnLabel{
                 cursor:pointer;
                 border-radius: 5px;
-                background-color: #759EFD;
+                background-color: white;
                 color: black;
                 padding: 3px 8px;
             }
@@ -183,12 +183,14 @@
 
         if ($_SERVER["REQUEST_METHOD"] == "GET") {
             /* Load values */
-            if (isset($_GET["category"]) && !empty($_GET["category"])) {    // Check if the category field is loaded with the correct value
+            if (isset($_GET["category"]) && !empty($_GET["category"]) && isset($_SESSION["user"]) && $_SESSION["valid_challenge"] === TRUE) {    // Check if the category field is loaded with the correct value
                 $category = $_GET["category"];
                 $_SESSION['questionsArr'] = loadQuestions($category);
                 if (sizeof($_SESSION['questionsArr']) !== 0) {
                     $checked = True;    // If only the category is not blank and not returning empty questions.
                 }
+            } else if (isset($_SESSION['user']) && !empty($_GET["category"])) {
+                header("Location:currentResult.php");
             } else {
                 header("Location:index.php");
             }
@@ -206,6 +208,7 @@
         $current_point = $correct_ques_count = $wrong_ques_count = 0;
         // When user finish the challenge
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
+            $_SESSION["valid_challenge"] = FALSE;   // Prevent go back and resubmit
             $_SESSION['attempt_count'] += 1;   // Increase the attempt
             // Load the posted data to the userAns array
             foreach ($_POST as $key => $value) {
@@ -224,7 +227,7 @@
             // Point calculations
             $_SESSION['current_points'] = (3 * ($correct_ques_count)) - (2 * ($wrong_ques_count));
             $_SESSION['total_points'] += (int) $_SESSION['current_points'];
-            $_SESSION['overall_points'] = (int) ($_SESSION['total_points'] / $_SESSION['attempt_count']);
+            $_SESSION['overall_points'] = (int) (round($_SESSION['total_points'] / $_SESSION['attempt_count']));
             unset($_SESSION['questionsArr']);   // Reset the array for next attempt. 
             //Redirect to the attempt result page
             header("Location:currentResult.php");

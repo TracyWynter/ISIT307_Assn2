@@ -11,7 +11,7 @@
         session_start();
         $_SESSION = array();
         session_destroy();
-        
+
         /* Start new session */
         session_start();
         $gameArr = array(
@@ -36,11 +36,19 @@
 
                 if ($checked) {
                     $_SESSION["user"] = $gameArr["user"];
+                    $_SESSION["valid_challenge"] = TRUE;
                     header("Location:game.php?category=" . $gameArr['category']);
                 } else {
                     $errMsg = "Please fill in your nickname and select <b>one</b> category to start game";
                 }
             }
+        }
+
+        if ($_SERVER['REQUEST_METHOD'] == "GET") {
+            $gameArr = array(
+                'user' => '',
+                'category' => ''
+            );
         }
         ?>
         <!-- Game Logo -->
