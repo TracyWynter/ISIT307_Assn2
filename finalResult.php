@@ -68,7 +68,7 @@
         /* Kill the session when user end the game */
 
         function exitGame() {
-            session_unset();
+            $_SESSION = array();
             session_destroy();
         }
 

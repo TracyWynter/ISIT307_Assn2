@@ -7,7 +7,12 @@
     <body>
         <!-- PHP Scripts -->
         <?php
-        session_unset();
+        /* Remove any older session if present */
+        session_start();
+        $_SESSION = array();
+        session_destroy();
+        
+        /* Start new session */
         session_start();
         $gameArr = array(
             'user' => '',
@@ -47,7 +52,7 @@
             <p id="challengeTitle">Take a Challenge</p>
             <form class="gameStartForm" method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>"/>
             <p><input type="text" name="user" id="user" placeholder="Enter your Nickname" value="<?php echo $gameArr['user']; ?>"></p>
-                <?php require 'gameMenu.php'; ?>
+            <?php require 'gameMenu.php'; ?>
         </div>
         <div class="errMsg">
             <p><?php echo $errMsg; ?></p>
