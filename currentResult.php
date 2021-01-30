@@ -69,7 +69,7 @@
                 header("Location:finalResult.php"); // Direct to the ending result of the challenge
             }
             if (isset($_POST['start_game']) && !empty($_POST['category'])) {
-                $_SESSION["valid_challenge"] = TRUE;
+                $_SESSION["valid_challenge"] = TRUE;  // Set to true to allow user to start a new round of game
                 header("Location:game.php?category=" . $_POST['category']);   // A new round of challenge
             } else {
                 $errMsg = "Select one category";
@@ -78,7 +78,7 @@
         $current_points = $overall_points = 0;
         if ($_SERVER['REQUEST_METHOD'] == "GET"){
             if (isset($_SESSION['overall_points']) && isset($_SESSION['current_points'])){
-                $_SESSION["valid_challenge"] = FALSE;
+                $_SESSION["valid_challenge"] = FALSE;   // Set to false to prevent going back to game
                 $current_point = $_SESSION['current_points'];
                 $overall_points = $_SESSION['overall_points'];
             } else{

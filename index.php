@@ -36,7 +36,7 @@
 
                 if ($checked) {
                     $_SESSION["user"] = $gameArr["user"];
-                    $_SESSION["valid_challenge"] = TRUE;
+                    $_SESSION["valid_challenge"] = TRUE; // Set to true to allow user to start game
                     header("Location:game.php?category=" . $gameArr['category']);
                 } else {
                     $errMsg = "Please fill in your nickname and select <b>one</b> category to start game";
