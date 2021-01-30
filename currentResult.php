@@ -79,7 +79,7 @@
         if ($_SERVER['REQUEST_METHOD'] == "GET"){
             if (isset($_SESSION['overall_points']) && isset($_SESSION['current_points'])){
                 $_SESSION["valid_challenge"] = FALSE;   // Set to false to prevent going back to game
-                $current_point = $_SESSION['current_points'];
+                $current_points = $_SESSION['current_points'];
                 $overall_points = $_SESSION['overall_points'];
             } else{
                 header("Location:index.php");   // If the session variable is not set, direct user to main page

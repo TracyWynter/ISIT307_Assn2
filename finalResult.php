@@ -7,6 +7,8 @@
                 background-repeat: no-repeat;
                 background-size:cover;
                 background-image: linear-gradient(to bottom right, mediumblue,teal ,indigo ,darkcyan, midnightblue);
+                padding:20px;
+                height:100%;
             }
             /* Game Logo */
             #logo{
@@ -66,7 +68,6 @@
         <?php
         session_start();
         /* Kill the session when user end the game */
-
         function exitGame() {
             $_SESSION = array();
             session_destroy();
