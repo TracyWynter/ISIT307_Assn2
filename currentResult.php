@@ -1,7 +1,8 @@
 <html>
     <head>
         <title>Game Result</title>
-        <link rel="stylesheet" href="gameMenu.css"> <!-- Game Menu CSS import -->
+        <!-- Styling (Include time to force reload of CSS) -->
+        <link rel="stylesheet" href="gameMenu.css?<?php echo time();?>"> <!-- Game Menu CSS import -->
         <style type="text/css">
             body{
                 font-family: "Comic Sans MS", "Comic Sans", cursive;  

@@ -9,6 +9,7 @@ General Information:
 - There are 20 questions set aside for each section.
 - There are 3 categories selection for the challenge (Music, Movies, Sports)
 - All questions for the 3 categories are stored inside an array in php
+- The import of external CSS includes a timestamp to make sure that it will reload the CSS after changes has been made.
 
 
 Roles:

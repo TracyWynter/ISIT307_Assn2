@@ -1,6 +1,7 @@
 <html>
     <head>
         <title><?php echo $_GET["category"]; ?> Challenge</title>
+        <!-- Styling -->
         <style type="text/css">
             body{
                 padding:20px;
@@ -12,7 +13,7 @@
             }
             /* Game Logo */
             #logo{
-                background-image:url(Images/logo.png);
+                background-image:url(Images/Logo.png);
                 margin-left:auto;
                 margin-right: auto;
                 background-repeat: no-repeat;
