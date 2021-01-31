@@ -33,7 +33,7 @@
                 } else {
                     $checked = False;
                 }
-
+                // Start Game Only when the user filled in required fields
                 if ($checked) {
                     $_SESSION["user"] = $gameArr["user"];
                     $_SESSION["valid_challenge"] = TRUE; // Set to true to allow user to start game
