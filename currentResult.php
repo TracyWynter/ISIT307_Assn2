@@ -2,7 +2,7 @@
     <head>
         <title>Game Result</title>
         <!-- Styling (Include time to force reload of CSS) -->
-        <link rel="stylesheet" href="gameMenu.css?<?php echo time();?>"> <!-- Game Menu CSS import -->
+        <link rel="stylesheet" href="gameMenu.css?<?php echo time(); ?>"> <!-- Game Menu CSS import -->
         <style type="text/css">
             body{
                 font-family: "Comic Sans MS", "Comic Sans", cursive;  
@@ -60,29 +60,37 @@
     <body>
         <?php
         session_start();
+        $current_points = $overall_points = 0;
         $gameArr = array(
             'user' => '',
             'category' => ''
         );
         $errMsg = "";
+        // When the user press one of the buttons
         if ($_SERVER['REQUEST_METHOD'] == "POST") {
+            // Exit Game Button
             if (isset($_POST['exit_game'])) {
                 header("Location:finalResult.php"); // Direct to the ending result of the challenge
             }
+            // Start Game Button
             if (isset($_POST['start_game']) && !empty($_POST['category'])) {
                 $_SESSION["valid_challenge"] = TRUE;  // Set to true to allow user to start a new round of game
                 header("Location:game.php?category=" . $_POST['category']);   // A new round of challenge
-            } else {
+            } else {    
+                if (isset($_SESSION['overall_points']) && isset($_SESSION['current_points'])) {
+                    $current_points = $_SESSION['current_points'];
+                    $overall_points = $_SESSION['overall_points'];
+                }
                 $errMsg = "Select one category";
             }
         }
-        $current_points = $overall_points = 0;
-        if ($_SERVER['REQUEST_METHOD'] == "GET"){
-            if (isset($_SESSION['overall_points']) && isset($_SESSION['current_points'])){
+        // When the page loads
+        if ($_SERVER['REQUEST_METHOD'] == "GET") {
+            if (isset($_SESSION['overall_points']) && isset($_SESSION['current_points'])) {
                 $_SESSION["valid_challenge"] = FALSE;   // Set to false to prevent going back to game
                 $current_points = $_SESSION['current_points'];
                 $overall_points = $_SESSION['overall_points'];
-            } else{
+            } else {
                 header("Location:index.php");   // If the session variable is not set, direct user to main page
             }
         }
