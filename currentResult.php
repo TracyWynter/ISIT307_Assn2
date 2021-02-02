@@ -89,7 +89,8 @@
         }
         // When the page loads
         if ($_SERVER['REQUEST_METHOD'] == "GET") {
-            if (isset($_SESSION['overall_points']) && isset($_SESSION['current_points'])) {
+            if (isset($_SESSION['overall_points']) && isset($_SESSION['current_points']) && 
+                    isset($_SESSION['correct_ques_count']) && isset($_SESSION['wrong_ques_count'])) {
                 $_SESSION["valid_challenge"] = FALSE;   // Set to false to prevent going back to game
                 $current_points = $_SESSION['current_points'];
                 $overall_points = $_SESSION['overall_points'];
