@@ -206,7 +206,8 @@
             6 => '',
             7 => '',
         );
-        $current_point = $correct_ques_count = $wrong_ques_count = 0;
+        $current_point = 0;
+        $_SESSION['correct_ques_count'] = $_SESSION['wrong_ques_count'] = 0;
         // When user finish the challenge
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $_SESSION["valid_challenge"] = FALSE;   // Prevent go back and resubmit
@@ -220,13 +221,13 @@
             // Check the user ans and the correct ans (userAns vs questionsArr)
             foreach ($userAns as $key => $value) {
                 if ($value == $_SESSION['questionsArr'][$key]['ans']) {
-                    $correct_ques_count++;
+                    $_SESSION['correct_ques_count']++;
                 } else {
-                    $wrong_ques_count++;
+                    $_SESSION['wrong_ques_count']++;
                 }
             }
             // Point calculations
-            $_SESSION['current_points'] = (3 * ($correct_ques_count)) - (2 * ($wrong_ques_count));
+            $_SESSION['current_points'] = (3 * ($_SESSION['correct_ques_count'])) - (2 * ($_SESSION['wrong_ques_count']));
             $_SESSION['total_points'] += (int) $_SESSION['current_points'];
             $_SESSION['overall_points'] = (int) (round($_SESSION['total_points'] / $_SESSION['attempt_count']));
             unset($_SESSION['questionsArr']);   // Reset the array for next attempt. 

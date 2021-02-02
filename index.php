@@ -2,7 +2,7 @@
     <head>
         <title>Take a challenge</title>
         <!-- Styling (Include time to force reload of CSS) -->
-        <link rel="stylesheet" href="gameMenu.css?<?php echo time();?>"/> 
+        <link rel="stylesheet" href="gameMenu.css?<?php echo time(); ?>"/> 
     </head>
     <body>
         <!-- PHP Scripts -->

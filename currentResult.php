@@ -8,10 +8,13 @@
                 font-family: "Comic Sans MS", "Comic Sans", cursive;  
                 padding-bottom:35px;
                 background-image: linear-gradient(to bottom right, mediumblue,teal ,indigo ,darkcyan, midnightblue);
+                height: 700px;
+                background-repeat: no-repeat;
+                background-size: cover;
             }
             .resultBoard{
                 width: 400px;
-                height:410px;
+                height: 500px;
                 margin-left:auto;
                 margin-right:auto;
                 border-radius:15px;
@@ -60,7 +63,7 @@
     <body>
         <?php
         session_start();
-        $current_points = $overall_points = 0;
+        $current_points = $overall_points = $correct_count = $wrong_count = 0;
         $gameArr = array(
             'user' => '',
             'category' => ''
@@ -76,7 +79,7 @@
             if (isset($_POST['start_game']) && !empty($_POST['category'])) {
                 $_SESSION["valid_challenge"] = TRUE;  // Set to true to allow user to start a new round of game
                 header("Location:game.php?category=" . $_POST['category']);   // A new round of challenge
-            } else {    
+            } else {
                 if (isset($_SESSION['overall_points']) && isset($_SESSION['current_points'])) {
                     $current_points = $_SESSION['current_points'];
                     $overall_points = $_SESSION['overall_points'];
@@ -90,6 +93,8 @@
                 $_SESSION["valid_challenge"] = FALSE;   // Set to false to prevent going back to game
                 $current_points = $_SESSION['current_points'];
                 $overall_points = $_SESSION['overall_points'];
+                $correct_count = $_SESSION['correct_ques_count'];
+                $wrong_count = $_SESSION['wrong_ques_count'];
             } else {
                 header("Location:index.php");   // If the session variable is not set, direct user to main page
             }
@@ -103,6 +108,8 @@
         <div class="resultBoard">
             <div id="resultTitle">Results</div>
             <?php
+            echo "<p>Number of correct anwers: " . $correct_count . "</p>";
+            echo "<p>Number of wrong answers: " . $wrong_count . "</p>";
             echo "<p>Overall Points: " . $overall_points . "</p>";
             echo "<p>Current Points: " . $current_points . "</p>";
             ?>
