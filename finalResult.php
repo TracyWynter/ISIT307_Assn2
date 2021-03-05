@@ -11,7 +11,7 @@
                 padding:20px;
                 height:100%;
             }
-            /* Game Logo */
+            /* Game Logo */ 
             #logo{
                 background-image:url(Images/Logo.png);
                 margin-left:auto;
